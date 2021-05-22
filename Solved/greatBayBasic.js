@@ -12,8 +12,8 @@ const connection = mysql.createConnection({
   user: 'root',
 
   // Your password
-  password: '',
-  database: 'greatBay_DB',
+  password: 'Sand_6632013',
+  database: 'employeetracker_db',
 });
 
 // function which prompts the user for what action they should take
