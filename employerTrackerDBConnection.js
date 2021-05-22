@@ -15,8 +15,16 @@ const connection = mysql.createConnection({
   database: 'employeeTracker_DB',
 });
 
+const afterConnection = () => {
+  connection.query('SELECT * FROM department', (err, res) => {
+    if (err) throw err;
+    console.log(res);
+    connection.end();
+  });
+};
+
 connection.connect((err) => {
   if (err) throw err;
   console.log(`connected as id ${connection.threadId}`);
-  connection.end();
+  afterConnection();
 });
