@@ -19,9 +19,19 @@ const afterConnection = () => {
   connection.query('SELECT * FROM department', (err, res) => {
     if (err) throw err;
     console.log(res);
-    connection.end();
   });
+    connection.query('SELECT * FROM titleRole', (err, res) => {
+          if (err) throw err;
+          console.log(res);
+  });
+
+  connection.query('SELECT * FROM employee', (err, res) => {
+    if (err) throw err;
+    console.log(res);
+  });
+  connection.end();
 };
+
 
 connection.connect((err) => {
   if (err) throw err;
