@@ -10,7 +10,7 @@ VALUES
 
 ---- Titlerole Seed ----
 
-INSERT INTO titleRole (title, salary, department_id)
+INSERT INTO roles (title, salary, department_id)
 VALUES 
 ('Managing Director', 150000, 1),
 ('Head of Technology', 120000, 2),

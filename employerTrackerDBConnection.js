@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 const inquirer = require('inquirer');
+const cTable = require('console.table');
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -18,16 +19,17 @@ const connection = mysql.createConnection({
 const afterConnection = () => {
   connection.query('SELECT * FROM department', (err, res) => {
     if (err) throw err;
-    console.log(res);
+    
+    console.table(res);
   });
-    connection.query('SELECT * FROM titleRole', (err, res) => {
+    connection.query('SELECT * FROM roles', (err, res) => {
           if (err) throw err;
-          console.log(res);
+          console.table(res);
   });
 
   connection.query('SELECT * FROM employee', (err, res) => {
     if (err) throw err;
-    console.log(res);
+    console.table(res);
   });
   connection.end();
 };
