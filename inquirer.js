@@ -1,7 +1,25 @@
 const inquirer = require('inquirer');
-const reads = require('./employerTrackerDBConnection');
+const reads = require('./connection');
 
 const { Departments, Roles, Employees} = reads;
+
+const addDepartment = () => {
+  inquirer
+      .prompt([
+          {
+              type: 'input',
+              message: 'Name this department',
+              name: 'name',
+              
+          },
+      ])
+      .then((res) => {
+          const {name} = res;
+          const add = new CreateDepartment(name);
+          add.addInfo().then(() => menuPrompts());
+      })
+};
+
 
 inquirer
   .prompt([
@@ -13,7 +31,7 @@ inquirer
         "Show Departments",
         "Show Roles",
         "Show Employees",
-        "Add Employee",
+        "Add Department",
         "Remove Employee",
         "Update Employee Role",
         "Update Employee Manager",
@@ -31,8 +49,8 @@ inquirer
     else if (answer.title === 'Show Employees') {
       Employees();
     }
-    else if  (answer.title === 'Add Employee') {
-      addEmployee();
+    else if  (answer.title === 'Add Department') {
+      addDepartment();
     }
     else if  (answer.title === 'Remove Employee') {
       removeEmployee();
