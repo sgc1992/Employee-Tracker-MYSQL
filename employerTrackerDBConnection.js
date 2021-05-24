@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const inquirer = require('inquirer');
+
 const cTable = require('console.table');
 
 const connection = mysql.createConnection({
@@ -16,72 +16,36 @@ const connection = mysql.createConnection({
   database: 'employeeTracker_DB',
 });
 
-inquirer
-  .prompt([
-    {
-      name: "title",
-      type: "list",
-      message: "What would you like to do?",
-      choices: [
-        "View All Employees",
-        "View All Employees By Department",
-        "View All Employees By Manager",+
-        "Add Employee",
-        "Remove Employee",
-        "Update Employee Role",
-        "Update Employee Manager",
-      ]
-    },
-  ])
-  .then((answer) => {
-    // based on their answer, either call the bid or the post functions
-    if (answer.title === 'View All Employees') {
-      viewEmployees();
-    }
-    else (answer.title === 'View All Employees By Department') {
-      viewEmployeesByDepartment();
-    }
-    else (answer.title === 'View All Employees By Manager') {
-      viewEmployeesByManager();
-    }
-    else (answer.title === 'Add Employee') {
-      addEmployee();
-    }
-    else (answer.title === 'Remove Employee') {
-      removeEmployee();
-    }
-    else (answer.title === 'Update Employee Role') {
-      updateEmployeeRole();
-    }
-    else (answer.title === 'Update Employee Manager') {
-      updateEmployeeManager();
-    }
-    else {
-      connection.end();
-    }
-  });
-
-const afterConnection = () => {
+const Departments = () => {
   connection.query('SELECT * FROM department', (err, res) => {
     if (err) throw err;
 
     console.table(res);
   });
+}
+  
+const Roles = () => {
   connection.query('SELECT * FROM roles', (err, res) => {
     if (err) throw err;
     console.table(res);
   });
+}
 
+const Employees = () => {
   connection.query('SELECT * FROM employee', (err, res) => {
     if (err) throw err;
     console.table(res);
   });
-  connection.end();
-};
+}
 
 
-connection.connect((err) => {
-  if (err) throw err;
-  console.log(`connected as id ${connection.threadId}`);
-  afterConnection();
-});
+  module.exports = {
+    Departments,
+    Roles,
+    Employees
+  }
+  
+
+
+
+
