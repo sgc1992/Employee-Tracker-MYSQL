@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const reads = require('./connection');
 
-const { Departments, Roles, Employees} = create;
+const { Departments, Roles, Employees} = reads;
 
 const addDepartment = () => {
   inquirer
