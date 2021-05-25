@@ -35,6 +35,7 @@ Command-line application that at a minimum allows the user to:
 ![](./Images/showDepartmentRolesEmployees.PNG)
 
 # Link for the github
+https://github.com/sgc1992/Employee-Tracker-MYSQL
 
 # Link to the demo video
 
