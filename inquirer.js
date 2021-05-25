@@ -2,8 +2,8 @@ const inquirer = require('inquirer');
 const reads = require('./connection');
 
 const { Departments, Roles, Employees, CreateDepartment, CreateRole } = reads;
-//create
 
+//Adding department
 const addDepartment = () => {
   inquirer
     .prompt([
@@ -21,6 +21,7 @@ const addDepartment = () => {
     })
 };
 
+//Adding role
 const addRole = () => {
   inquirer
     .prompt([
@@ -35,10 +36,16 @@ const addRole = () => {
         name: 'salary',
         choices: [100000, 200000, 300000, 400000, 500000]
       },
+      {
+        type: 'list',
+        message: 'add the department id?',
+        name: 'id',
+        choices: [7, 8, 9, 10, 11]
+      },
     ])
     .then((res) => {
-      const { name, salary } = res;
-      const add = new CreateRole(name, salary);
+      const { name, salary,id } = res;
+      const add = new CreateRole(name, salary,id);
       add.addInfo();
 
 
@@ -80,12 +87,7 @@ inquirer
     else if (answer.title === 'Add Role') {
       addRole();
     }
-    // else if (answer.title === 'Update Employee Role') {
-    //   updateEmployeeRole();
-    // }
-    // else if (answer.title === 'Update Employee Manager') {
-    //   updateEmployeeManager();
-    // }
+   
     else {
       connection.end();
     }

@@ -8,13 +8,12 @@ const connection = mysql.createConnection({
   // Your port, if not 3306
   port: 3306,
 
-  // Your username
+  // Username and password for MySQL
   user: 'root',
-
-  // Be sure to update with your own MySQL password!
   password: 'Sand_6632013',
   database: 'employeeTracker_DB',
 });
+
 
 const Departments = () => {
   connection.query('SELECT * FROM department', (err, res) => {
@@ -38,7 +37,7 @@ const Employees = () => {
   });
 }
 
-//create a function insert department take argument
+//create a function insert department
 class CreateDepartment {
   constructor(name) {
     this.name = name;
@@ -60,10 +59,13 @@ class CreateDepartment {
   }
 };
 
+//create a function insert role
+
 class CreateRole {
-  constructor(title, salary, id) {
+  constructor(title, salary, department_id) {
     this.title = title;
     this.salary = salary;
+    this.id = department_id;
   }
 
   addInfo() {
@@ -73,6 +75,7 @@ class CreateRole {
         {
           title: this.title,
           salary: this.salary,
+          department_id:this.id,
         },
         (err, res) => {
           if (err) throw err;
@@ -83,11 +86,8 @@ class CreateRole {
   }
 };
 
-// of the department name
-// add the function to the export
-// add function to import inquier.js file
 
-
+//exporting modules
 module.exports = {
   Departments,
   Roles,
