@@ -1,7 +1,8 @@
 const inquirer = require('inquirer');
 const reads = require('./connection');
 
-const { Departments, Roles, Employees} = reads;
+const { Departments, Roles, Employees,CreateDepartment, CreateRole} = reads;
+//create
 
 const addDepartment = () => {
   inquirer
@@ -16,7 +17,31 @@ const addDepartment = () => {
       .then((res) => {
           const {name} = res;
           const add = new CreateDepartment(name);
-          add.addInfo().then(() => menuPrompts());
+          add.addInfo();
+      })
+};
+
+const addRole = () => {
+  inquirer
+      .prompt([
+          {
+              type: 'input',
+              message: 'What would you like to name this role?',
+              name: 'name',
+          },
+          {
+              type: 'list',
+              message: 'What salary would you like?',
+              name: 'salary',
+              choices: [100000, 200000, 300000, 400000, 500000]
+          },
+      ])
+      .then((res) => {
+          const { name, salary} = res;
+                 const add = new CreateRole(name, salary);
+                 add.addInfo();
+              }
+          })
       })
 };
 
