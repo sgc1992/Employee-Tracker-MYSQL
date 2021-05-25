@@ -32,7 +32,7 @@ Command-line application that at a minimum allows the user to:
 
   * View departments, roles, employees
 
-![](./Images/)
+![](./Images/showDepartmentRolesEmployees)
 
 # Link for the github
 
