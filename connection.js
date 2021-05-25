@@ -86,6 +86,33 @@ class CreateRole {
   }
 };
 
+class CreateEmployee {
+  constructor(first_name, last_name, role_id,manager_id) {
+    this.firstname = first_name;
+    this.lastname = last_name;
+    this.roleid = role_id;
+    this.managerid = manager_id;
+  }
+
+  addInfo() {
+    return new Promise(resolve => {
+      connection.query(
+        'INSERT INTO roles SET ?',
+        {
+          first_name: this.firstname,
+          last_name: this.lastname,
+          role_id:this.roleid,
+          manager_id:this.managerid,
+        },
+        (err, res) => {
+          if (err) throw err;
+          console.log(`${this.firstname} Employee added to the database...`)
+          resolve();
+        })
+    })
+  }
+};
+
 
 //exporting modules
 module.exports = {
@@ -93,5 +120,6 @@ module.exports = {
   Roles,
   Employees,
   CreateDepartment,
-  CreateRole
+  CreateRole,
+  CreateEmployee
 }
