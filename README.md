@@ -31,8 +31,8 @@ Command-line application that at a minimum allows the user to:
   * Add departments, roles, employees
 
   * View departments, roles, employees
-
-![](./Images/showDepartmentRolesEmployees)
+  * 
+![](./Images/showDepartmentRolesEmployees.PNG)
 
 # Link for the github
 
