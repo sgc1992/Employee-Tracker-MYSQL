@@ -97,7 +97,7 @@ class CreateEmployee {
   addInfo() {
     return new Promise(resolve => {
       connection.query(
-        'INSERT INTO roles SET ?',
+        'INSERT INTO employee SET ?',
         {
           first_name: this.firstname,
           last_name: this.lastname,
