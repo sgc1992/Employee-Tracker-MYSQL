@@ -38,7 +38,7 @@ Command-line application that at a minimum allows the user to:
 https://github.com/sgc1992/Employee-Tracker-MYSQL
 
 # Link to the demo video
-
+https://drive.google.com/file/d/1VvvQTZwq71Xq1e205BEh0LxImBshtFH8/view
 
 
 
